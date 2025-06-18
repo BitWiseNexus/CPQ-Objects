@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
 import pricebookRoutes from "./routes/pricebook.route.js"
+import qliRoutes from "./routes/qli.route.js"
 import { connectDB } from "./lib/db.js"
 
 dotenv.config();
