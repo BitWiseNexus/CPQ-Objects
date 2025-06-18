@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const PricebookForm = ({ onSubmit }) => {
+const PricebookForm = ({ onSubmit, editData }) => {
   const [formData, setFormData] = useState({
     name: '',
     currency: 'INR',
     description: '',
   });
+
+  useEffect(() => {
+    if (editData) {
+      setFormData({
+        name: editData.name || '',
+        currency: editData.currency || 'INR',
+        description: editData.description || '',
+      });
+    }
+  }, [editData]);
 
   const handleChange = (e) => {
     setFormData(prev => ({
@@ -18,12 +28,14 @@ const PricebookForm = ({ onSubmit }) => {
     e.preventDefault();
     if (formData.name.trim() === '') return alert('Name is required');
     onSubmit(formData);
-    setFormData({ name: '', currency: 'USD', description: '' });
+    setFormData({ name: '', currency: 'INR', description: '' });
   };
 
   return (
     <form onSubmit={handleSubmit} className="bg-white shadow p-4 rounded mb-6 space-y-4">
-      <h2 className="text-xl font-semibold">Add Pricebook</h2>
+      <h2 className="text-xl font-semibold">
+        {editData ? 'Edit Pricebook' : 'Add Pricebook'}
+      </h2>
 
       <div>
         <label className="block font-medium">Name</label>
@@ -61,8 +73,11 @@ const PricebookForm = ({ onSubmit }) => {
         />
       </div>
 
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-        Create Pricebook
+      <button
+        type="submit"
+        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
+      >
+        {editData ? 'Update Pricebook' : 'Create Pricebook'}
       </button>
     </form>
   );

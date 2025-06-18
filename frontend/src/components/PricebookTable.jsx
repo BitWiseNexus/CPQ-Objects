@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PricebookTable = ({ data }) => {
+const PricebookTable = ({ data, onEdit, onDelete }) => {
   if (!data || data.length === 0) {
     return (
       <div className="text-gray-600 italic">No pricebooks available.</div>
@@ -17,6 +17,7 @@ const PricebookTable = ({ data }) => {
             <th className="p-3 text-left font-semibold border-b">Description</th>
             <th className="p-3 text-left font-semibold border-b">Status</th>
             <th className="p-3 text-left font-semibold border-b">Created At</th>
+            <th className="p-3 text-left font-semibold border-b">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +32,20 @@ const PricebookTable = ({ data }) => {
                 </span>
               </td>
               <td className="p-3 border-b">{new Date(pricebook.createdAt).toLocaleDateString()}</td>
+              <td className="p-3 border-b space-x-3">
+              <button
+                className="text-blue-600 hover:underline cursor-pointer"
+                onClick={() => onEdit(pricebook)}
+              >
+                Edit
+              </button>
+              <button
+                className="text-red-600 hover:underline cursor-pointer"
+                onClick={() => onDelete(pricebook._id)}
+              >
+                Delete
+              </button>
+            </td>
             </tr>
           ))}
         </tbody>

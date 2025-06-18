@@ -26,3 +26,8 @@ export const updatePricebook = async (id, data) => {
   const res = await axios.put(`${BASE_URL}/${id}`, data);
   return res.data;
 };
+
+export const deletePricebook = async (id) => {
+  const res = await axios.delete(`${BASE_URL}/${id}`);
+  return res.data;
+};
