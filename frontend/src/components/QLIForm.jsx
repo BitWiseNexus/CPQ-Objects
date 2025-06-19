@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-const QLIForm = () => {
+const QLIForm = ({ onSubmit, editData }) => {
   const [formData, setFormData] = useState({
-    product: '',
+    productName: '',
     quantity: 1,
     unitPrice: 0,
     discount: 0,
@@ -14,7 +14,7 @@ const QLIForm = () => {
       setFormData(editData);
     } else {
       setFormData({
-        product: '',
+        productName: '',
         quantity: 1,
         unitPrice: 0,
         discount: 0,
@@ -35,11 +35,28 @@ const QLIForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.product || !formData.pricebook) {
-      alert('Product and Pricebook are required');
+    const payload = {
+      ...formData,
+      quantity: Number(formData.quantity),
+      unitPrice: Number(formData.unitPrice),
+      discount: Number(formData.discount),
+    };
+
+    if (!payload.productName || !payload.pricebook) {
+      alert("Product name and Pricebook are required");
       return;
     }
-    onSubmit(formData);
+
+    onSubmit(payload);
+
+    setFormData({
+      productName: '',
+      quantity: 1,
+      unitPrice: 0,
+      discount: 0,
+      pricebook: '',
+    });
+
   };
 
   return (
@@ -47,11 +64,11 @@ const QLIForm = () => {
       <h2 className="text-xl font-semibold">{editData ? 'Edit' : 'Add'} Quote Line Item</h2>
 
       <div>
-        <label className="block font-medium">Product</label>
+        <label className="block font-medium">productName</label>
         <input
           type="text"
-          name="product"
-          value={formData.product}
+          name="productName"
+          value={formData.productName}
           onChange={handleChange}
           className="w-full p-2 border rounded"
           required
@@ -64,7 +81,7 @@ const QLIForm = () => {
           <input
             type="number"
             name="quantity"
-            value={formData.quantity}
+            value={formData.quantity || ''}
             onChange={handleChange}
             className="w-full p-2 border rounded"
             min="1"

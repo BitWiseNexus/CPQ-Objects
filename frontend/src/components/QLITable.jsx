@@ -25,21 +25,21 @@ const QLITable = ({ qlis, onEdit, onDelete }) => {
                 const total = (qli.quantity * qli.unitPrice * (1 - qli.discount / 100)).toFixed(2);
                 return (
                   <tr key={qli._id} className="border-t">
-                    <td className="border p-2">{qli.product}</td>
+                    <td className="border p-2">{qli.productName}</td>
                     <td className="border p-2">{qli.quantity}</td>
                     <td className="border p-2">₹{qli.unitPrice}</td>
                     <td className="border p-2">{qli.discount}%</td>
                     <td className="border p-2">₹{total}</td>
-                    <td className="border p-2 text-sm">{qli.pricebook}</td>
+                    <td className="border p-2 text-sm">{qli.pricebook.name || qli.pricebook._id}</td>
                     <td className="border p-2 space-x-2">
                       <button
-                        className="px-3 py-1 bg-yellow-400 hover:bg-yellow-500 text-white rounded"
+                        className="text-blue-600 hover:underline cursor-pointer"
                         onClick={() => onEdit(qli)}
                       >
                         Edit
                       </button>
                       <button
-                        className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded"
+                        className="text-red-600 hover:underline cursor-pointer"
                         onClick={() => onDelete(qli._id)}
                       >
                         Delete

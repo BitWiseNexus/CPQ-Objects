@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/pricebooks', pricebookRoutes);
-app.use('/api/qli', qliRoutes);
+app.use('/api/qlis', qliRoutes);
 
 app.listen(port, ()=>{
   console.log(`App listening on port: ${port}`);

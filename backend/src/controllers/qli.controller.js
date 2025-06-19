@@ -14,13 +14,16 @@ export const getAllQLIs = async (req, res) => {
 export const createQLI = async (req, res) => {
   try {
     const { productName, quantity, unitPrice, discount, pricebook } = req.body;
-    const totalPrice = quantity * unitPrice * (1 - discount / 100);
+    const quantityNum = Number(quantity);
+    const unitPriceNum = Number(unitPrice);
+    const discountNum = Number(discount);
+    const totalPrice = quantityNum * unitPriceNum * (1 - discountNum / 100);
 
     const newQLI = await QLI.create({
       productName,
-      quantity,
-      unitPrice,
-      discount,
+      quantity: quantityNum,
+      unitPrice: unitPriceNum,
+      discount: discountNum,
       totalPrice,
       pricebook,
     });
@@ -37,11 +40,21 @@ export const updateQLI = async (req, res) => {
   const { productName, quantity, unitPrice, discount, pricebook } = req.body;
 
   try {
-    const totalPrice = quantity * unitPrice * (1 - discount / 100);
+    const quantityNum = Number(quantity);
+    const unitPriceNum = Number(unitPrice);
+    const discountNum = Number(discount);
+    const totalPrice = quantityNum * unitPriceNum * (1 - discountNum / 100);
 
     const updated = await QLI.findByIdAndUpdate(
       id,
-      { productName, quantity, unitPrice, discount, totalPrice, pricebook },
+      { 
+        productName,
+        quantity: quantityNum,
+        unitPrice: unitPriceNum,
+        discount: discountNum,
+        totalPrice,
+        pricebook
+      },
       { new: true }
     );
 
