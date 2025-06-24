@@ -11,7 +11,13 @@ const QLITable = ({ qlis, onEdit, onDelete }) => {
           <table className="min-w-full table-auto border border-gray-300">
             <thead className="bg-gray-100">
               <tr>
-                
+                <th className="border p-2 text-left">Product</th>
+                <th className="border p-2 text-left">Quantity</th>
+                <th className="border p-2 text-left">Unit Price</th>
+                <th className="border p-2 text-left">Discount (%)</th>
+                <th className="border p-2 text-left">Total</th>
+                <th className="border p-2 text-left">Pricebook ID</th>
+                <th className="border p-2 text-left">Actions</th>
               </tr>
             </thead>
             <tbody>
