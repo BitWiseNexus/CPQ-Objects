@@ -48,6 +48,7 @@ const productRuleSchema = new mongoose.Schema({
     enum: ['Configuration', 'QuoteLine'],
     default: 'QuoteLine',
   }
-}, { timestamps: true });
+}, {timestamps: true}
+);
 
 export default mongoose.model('ProductRule', productRuleSchema);
