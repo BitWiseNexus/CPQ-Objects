@@ -96,7 +96,7 @@ const ProductRuleForm = ({ onSubmit, editData }) => {
           onChange={handleChange}
           className="w-full p-2 border rounded"
         >
-          <option value="QuoteLine">QuoteLine</option>
+          <option value="QuoteLine">Quote Line</option>
           <option value="Configuration">Configuration</option>
         </select>
       </div>
@@ -142,10 +142,10 @@ const ProductRuleForm = ({ onSubmit, editData }) => {
               required
             >
               <option value="">Action Type</option>
-              <option value="AddProduct">AddProduct</option>
-              <option value="RemoveProduct">RemoveProduct</option>
-              <option value="ShowMessage">ShowMessage</option>
-              <option value="HideOption">HideOption</option>
+              <option value="AddProduct">Add Product</option>
+              <option value="RemoveProduct">Remove Product</option>
+              <option value="ShowMessage">Show Message</option>
+              <option value="HideOption">Hide Option</option>
             </select>
             <input
               type="text"
