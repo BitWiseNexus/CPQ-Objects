@@ -5,8 +5,8 @@ import {
   updateProductRule,
   deleteProductRule
 } from '../apis/productrule';
-import ProductRuleForm from '../components/ProductRuleForm';
-import ProductRuleTable from '../components/ProductRuleTable';
+import ProductRuleForm from '../components/ProductruleForm';
+import ProductRuleTable from '../components/ProductruleTable';
 
 const ProductRule = () => {
   const [rules, setRules] = useState([]);
