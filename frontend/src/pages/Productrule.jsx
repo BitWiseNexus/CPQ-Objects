@@ -1,0 +1,58 @@
+import React, { useEffect, useState } from 'react';
+import {
+  getAllProductRules,
+  createProductRule,
+  updateProductRule,
+  deleteProductRule
+} from '../apis/productrule';
+import ProductRuleForm from '../components/ProductRuleForm';
+import ProductRuleTable from '../components/ProductRuleTable';
+
+const ProductRule = () => {
+  const [rules, setRules] = useState([]);
+  const [editData, setEditData] = useState(null);
+
+  const fetchRules = async () => {
+    const data = await getAllProductRules();
+    setRules(data);
+  };
+
+  useEffect(() => {
+    fetchRules();
+  }, []);
+
+  const handleCreateOrUpdate = async (data) => {
+    if (editData) {
+      await updateProductRule(editData._id, data);
+      setEditData(null);
+    } else {
+      await createProductRule(data);
+    }
+    fetchRules();
+  };
+
+  const handleEditClick = (rule) => {
+    setEditData(rule);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleDeleteClick = async (id) => {
+    const confirm = window.confirm('Are you sure you want to delete this rule?');
+    if (confirm) {
+      await deleteProductRule(id);
+      fetchRules();
+    }
+  };
+
+  return (
+    <div className="max-w-5xl mx-auto py-8 px-4">
+      <h1 className="text-3xl font-bold mb-6">Product Rule Management</h1>
+      <ProductRuleForm onSubmit={handleCreateOrUpdate} editData={editData} />
+      <div className="mt-10">
+        <ProductRuleTable rules={rules} onEdit={handleEditClick} onDelete={handleDeleteClick} />
+      </div>
+    </div>
+  );
+};
+
+export default ProductRule;
