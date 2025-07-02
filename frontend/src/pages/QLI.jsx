@@ -40,8 +40,8 @@ const QLI = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-6">Quote Line Item Management</h1>
+    <div className="max-w-4xl mx-auto py-10 px-4">
+      <h1 className="text-2xl font-bold mb-6">Quote Line Item Management</h1>
       <QLIForm onSubmit={handleCreateOrUpdate} editData={editData} />
       <div className="mt-10">
         <QLITable qlis={qlis} onEdit={handleEditClick} onDelete={handleDeleteClick} />

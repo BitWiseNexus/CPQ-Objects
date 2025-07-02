@@ -45,8 +45,8 @@ const ProductRule = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-6">Product Rule Management</h1>
+    <div className="max-w-4xl mx-auto py-10 px-4">
+      <h1 className="text-2xl font-bold mb-6">Product Rule Management</h1>
       <ProductRuleForm onSubmit={handleCreateOrUpdate} editData={editData} />
       <div className="mt-10">
         <ProductRuleTable rules={rules} onEdit={handleEditClick} onDelete={handleDeleteClick} />
