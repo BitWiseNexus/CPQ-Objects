@@ -128,7 +128,7 @@ const ProductRuleForm = ({ onSubmit, editData }) => {
             />
           </div>
         ))}
-        <button type="button" onClick={addCondition} className="text-blue-600 mt-2">+ Add Condition</button>
+        {/* <button type="button" onClick={addCondition} className="text-blue-600 mt-2">+ Add Condition</button> */}
       </div>
 
       <div>
@@ -163,7 +163,7 @@ const ProductRuleForm = ({ onSubmit, editData }) => {
             />
           </div>
         ))}
-        <button type="button" onClick={addAction} className="text-blue-600 mt-2">+ Add Action</button>
+        {/* <button type="button" onClick={addAction} className="text-blue-600 mt-2">+ Add Action</button> */}
       </div>
 
       <button
