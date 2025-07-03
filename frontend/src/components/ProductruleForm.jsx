@@ -136,13 +136,20 @@ const ProductRuleForm = ({ onSubmit, editData }) => {
               onChange={(e) => handleConditionChange(i, 'field', e.target.value)}
               className="p-2 border rounded"
             />
-            <input
-              type="text"
-              placeholder="Operator"
+            <select
               value={cond.operator}
               onChange={(e) => handleConditionChange(i, 'operator', e.target.value)}
               className="p-2 border rounded"
-            />
+            >
+              <option value="">Operator</option>
+              <option value="==">==</option>
+              <option value="!=">!=</option>
+              <option value=">">{'>'}</option>
+              <option value="<">{'<'}</option>
+              <option value=">=">{'>='}</option>
+              <option value="<=">{'<='}</option>
+            </select>
+
             <input
               type="text"
               placeholder="Value"
