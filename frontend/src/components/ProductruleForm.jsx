@@ -14,7 +14,11 @@ const ProductRuleForm = ({ onSubmit, editData }) => {
 
   useEffect(() => {
     if (editData) {
-      setFormData(editData);
+      setFormData({
+        ...editData,
+        conditions: editData.conditions?.map(c => ({ ...c })) || [initialCondition],
+        actions: editData.actions?.map(a => ({ ...a })) || [initialAction],
+      });
     } else {
       setFormData({
         ruleName: '',
@@ -25,6 +29,7 @@ const ProductRuleForm = ({ onSubmit, editData }) => {
       });
     }
   }, [editData]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
