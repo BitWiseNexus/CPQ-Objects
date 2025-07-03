@@ -208,4 +208,3 @@ const ProductRuleForm = ({ onSubmit, editData }) => {
 };
 
 export default ProductRuleForm;
- 
