@@ -21,7 +21,8 @@ const ProductRule = () => {
     fetchRules();
   }, []);
 
-  const handleCreateOrUpdate = async (data) => {
+const handleCreateOrUpdate = async (data) => {
+  try {
     if (editData) {
       await updateProductRule(editData._id, data);
       setEditData(null);
@@ -29,30 +30,34 @@ const ProductRule = () => {
       await createProductRule(data);
     }
     fetchRules();
-  };
-
-  const handleEditClick = (rule) => {
-    setEditData(rule);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleDeleteClick = async (id) => {
-    const confirm = window.confirm('Are you sure you want to delete this rule?');
-    if (confirm) {
-      await deleteProductRule(id);
-      fetchRules();
+  } catch (err) {
+      alert("Something went wrong while saving the rule.");
+      console.error(err);
     }
-  };
+};
 
-  return (
-    <div className="max-w-4xl mx-auto py-10 px-4">
-      <h1 className="text-2xl font-bold mb-6">Product Rule Management</h1>
+const handleEditClick = (rule) => {
+  setEditData(rule);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+const handleDeleteClick = async (id) => {
+  const confirm = window.confirm('Are you sure you want to delete this rule?');
+  if (confirm) {
+    await deleteProductRule(id);
+    fetchRules();
+  }
+};
+
+return (
+  <div className="max-w-4xl mx-auto py-10 px-4">
+    <h1 className="text-2xl font-bold mb-6">Product Rule Management</h1>
       <ProductRuleForm onSubmit={handleCreateOrUpdate} editData={editData} />
       <div className="mt-10">
         <ProductRuleTable rules={rules} onEdit={handleEditClick} onDelete={handleDeleteClick} />
       </div>
-    </div>
-  );
+  </div>
+);
 };
 
 export default ProductRule;

@@ -52,13 +52,32 @@ const ProductRuleForm = ({ onSubmit, editData }) => {
   const addAction = () => setFormData({ ...formData, actions: [...formData.actions, initialAction] });
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.ruleName || !formData.ruleType) {
-      alert('Rule Name and Rule Type are required.');
-      return;
-    }
-    onSubmit(formData);
-  };
+  e.preventDefault();
+  if (!formData.ruleName || !formData.ruleType) {
+    alert('Rule Name and Rule Type are required.');
+    return;
+  }
+
+  const cleanedConditions = formData.conditions.filter(c => c.field && c.operator && c.value);
+  const cleanedActions = formData.actions.filter(a => a.actionType);
+
+  if (cleanedConditions.length === 0) {
+    alert("Please add at least one valid condition.");
+    return;
+  }
+
+  if (cleanedActions.length === 0) {
+    alert("Please add at least one valid action.");
+    return;
+  }
+
+  onSubmit({
+    ...formData,
+    conditions: cleanedConditions,
+    actions: cleanedActions,
+  });
+};
+
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-4 rounded shadow mb-6 space-y-4">
