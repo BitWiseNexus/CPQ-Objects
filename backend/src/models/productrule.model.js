@@ -17,7 +17,7 @@ const conditionSchema = new mongoose.Schema({
 const actionSchema = new mongoose.Schema({
   actionType: {
     type: String,
-    enum: ['AddProduct', 'RemoveProduct', 'ShowMessage', 'HideOption'],
+    enum: ['Add Product', 'Remove Product', 'Show Message', 'Hide Option'],
     required: true,
   },
   targetProductId: {
