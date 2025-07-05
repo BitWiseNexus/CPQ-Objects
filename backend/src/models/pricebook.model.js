@@ -35,6 +35,6 @@ const pricebookSchema = new mongoose.Schema({
 }, {
   timestamps: true,
 });
-
+ 
 const Pricebook = mongoose.model('Pricebook', pricebookSchema);
 export default Pricebook;
