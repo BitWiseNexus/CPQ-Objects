@@ -202,7 +202,7 @@ const ProductRuleForm = ({ onSubmit, editData }) => {
         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
       >
         {editData ? 'Update' : 'Create'}
-      </button>
+      </button> 
     </form>
   );
 };
