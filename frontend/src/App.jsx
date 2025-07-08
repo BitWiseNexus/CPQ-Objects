@@ -4,6 +4,7 @@ import Pricebook from './pages/Pricebook';
 import QLI from './pages/QLI';
 import ProductRule from './pages/Productrule';
 import PriceRule from './pages/PriceRule'
+import Product from './pages/product'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/qlis" element={<QLI />} />
           <Route path="/product-rules" element={<ProductRule />} />
           <Route path="/price-rules" element={<PriceRule />} />
+          <Route path="/products" element={<Product />} />
         </Routes>
       </div>
     </Router>
