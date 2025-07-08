@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Pricebook from './pages/Pricebook';
 import QLI from './pages/QLI';
 import ProductRule from './pages/Productrule';
+import PriceRule from './pages/PriceRule'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <Route path="/pricebooks" element={<Pricebook />} />
           <Route path="/qlis" element={<QLI />} />
           <Route path="/product-rules" element={<ProductRule />} />
+          <Route path="/price-rules" element={<PriceRule />} />
         </Routes>
       </div>
     </Router>
